@@ -18,6 +18,7 @@ export default function EditTransactionModal({
   const [amount, setAmount] = useState("")
   const [category, setCategory] = useState("")
   const [date, setDate] = useState("")
+  const [type, setType] = useState<"income" | "expense">("expense")
   
   // Pre-fill form when transaction changes
   useEffect(() => {
@@ -26,6 +27,7 @@ export default function EditTransactionModal({
       setAmount(transaction.amount.toString())
       setCategory(transaction.category)
       setDate(transaction.date)
+      setType(transaction.type)
     }
   }, [transaction])
 
@@ -42,6 +44,7 @@ export default function EditTransactionModal({
         amount: Number(amount),
         category,
         date,
+        type
       })
     })
 
@@ -57,24 +60,39 @@ export default function EditTransactionModal({
 
         <form onSubmit={handleSubmit} className="space-y-3">
           <input
+            className="border p-2 w-full"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Title"
           />
 
           <input
+            className="border p-2 w-full"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             placeholder="Amount"
           />
 
+          <label htmlFor="type" className="text-sm font-medium">Type</label>
+          <select
+            id="type"
+            className="border p-2 w-full"
+            value={type}
+            onChange={(e) => setType(e.target.value as "income" | "expense")}
+          >
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+
           <input
+            className="border p-2 w-full"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             placeholder="Category"
           />
 
           <input
+            className="border p-2 w-full"
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}

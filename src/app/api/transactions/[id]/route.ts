@@ -35,7 +35,7 @@ export async function PUT(
   console.log("ID from params:", id)
   const body = await req.json()
 
-  const { title, amount, category, date } = body
+  const { title, amount, category, date, type } = body
 
   const { data, error } = await supabase
     .from("transactions")
@@ -43,7 +43,8 @@ export async function PUT(
       title,
       amount,
       category,
-      date
+      date,
+      type
     })
     .eq("id", id)
     .select("*")

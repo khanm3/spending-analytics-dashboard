@@ -10,6 +10,7 @@ export default function TransactionForm({ onAdd }: Props) {
   const [amount, setAmount] = useState("")
   const [category, setCategory] = useState("")
   const [date, setDate] = useState("")
+  const [type, setType] = useState<"income" | "expense">("expense")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -18,7 +19,8 @@ export default function TransactionForm({ onAdd }: Props) {
       title,
       amount: Number(amount),
       category,
-      date
+      date,
+      type
     }
 
     const res = await fetch("/api/transactions", {
@@ -55,6 +57,17 @@ export default function TransactionForm({ onAdd }: Props) {
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
       />
+
+      <label htmlFor="type" className="text-sm font-medium">Type</label>
+      <select
+        id="type"
+        className="border p-2 w-full"
+        value={type}
+        onChange={(e) => setType(e.target.value as "income" | "expense")}
+      >
+        <option value="expense">Expense</option>
+        <option value="income">Income</option>
+      </select>
 
       <input
         className="border p-2 w-full"

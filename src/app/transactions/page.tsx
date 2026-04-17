@@ -1,6 +1,6 @@
 "use client"
 
-import EditTransactionModal from "@/components/EditTransactionModel"
+import EditTransactionModal from "@/components/EditTransactionModal"
 import TransactionForm from "@/components/TransactionForm"
 import TransactionList from "@/components/TransactionList"
 import { Transaction } from "@/types/transaction"
@@ -12,6 +12,12 @@ export default function TransactionsPage() {
 
   const fetchTransactions = async () => {
     const res = await fetch("/api/transactions")
+
+    if (!res.ok) {
+      console.error("Failed to fetch transactions")
+      return
+    }
+
     const data = await res.json()
     setTransactions(data)
   }
