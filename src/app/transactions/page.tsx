@@ -3,6 +3,7 @@
 import EditTransactionModal from "@/components/EditTransactionModal"
 import TransactionForm from "@/components/TransactionForm"
 import TransactionList from "@/components/TransactionList"
+import TransactionSummary from "@/components/TransactionSummary"
 import { Transaction } from "@/types/transaction"
 import { useEffect, useState } from "react"
 
@@ -28,12 +29,28 @@ export default function TransactionsPage() {
     )
   }
 
+  const totalIncome = transactions
+    .filter((t) => t.type === "income")
+    .reduce((sum, t) => sum + t.amount, 0)
+
+  const totalExpenses = transactions
+    .filter((t) => t.type === "expense")
+    .reduce((sum, t) => sum + t.amount, 0)
+
+  const net = totalIncome - totalExpenses
+
   useEffect(() => {
     fetchTransactions()
   }, [])
 
   return (
     <div className="p-6">
+      <TransactionSummary
+        totalIncome={totalIncome}
+        totalExpenses={totalExpenses}
+        net={net}
+      />
+
       <TransactionForm onAdd={fetchTransactions} />
 
       <TransactionList
