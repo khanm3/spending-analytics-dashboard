@@ -1,5 +1,6 @@
 "use client"
 
+import CategoryPieChart from "@/components/CategoryPieChart"
 import EditTransactionModal from "@/components/EditTransactionModal"
 import TransactionForm from "@/components/TransactionForm"
 import TransactionList from "@/components/TransactionList"
@@ -39,6 +40,18 @@ export default function TransactionsPage() {
 
   const net = totalIncome - totalExpenses
 
+  const categoryData = Object.values(
+    transactions.reduce((acc, t) => {
+      if (!acc[t.category]) {
+        acc[t.category] = { name: t.category, value: 0 }
+      }
+
+      acc[t.category].value += Math.abs(t.amount)
+
+      return acc
+    }, {} as Record<string, { name: string; value: number }>)
+  )
+
   useEffect(() => {
     fetchTransactions()
   }, [])
@@ -50,6 +63,8 @@ export default function TransactionsPage() {
         totalExpenses={totalExpenses}
         net={net}
       />
+
+      <CategoryPieChart data={categoryData} />
 
       <TransactionForm onAdd={fetchTransactions} />
 
