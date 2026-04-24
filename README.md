@@ -34,7 +34,7 @@ Built with Next.js, React, TypeScript, Tailwind CSS, and Supabase (PostgreSQL).
 |------|--------|
 | src/app/api/transactions/route.ts | GET, POST |
 | src/app/api/transactions/[id]/route.ts | PUT, DELETE |
-| src/app/transactions/page.tsx | Dashboard page |
+| src/app/page.tsx | Dashboard page |
 | src/components/ | UI components |
 | src/lib/supabase.ts | Supabase client |
 
@@ -52,7 +52,7 @@ npm install
 npm run dev
 ```
 
-Then open: [http://localhost:3000/transactions](http://localhost:3000/transactions)
+Then open: [http://localhost:3000](http://localhost:3000)
 
 ## Environment Setup
 
