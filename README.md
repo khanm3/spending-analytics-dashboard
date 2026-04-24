@@ -6,6 +6,8 @@ Built with Next.js, React, TypeScript, Tailwind CSS, and Supabase (PostgreSQL).
 
 ## Demo
 
+Live App: https://spending-analytics-dashboard.vercel.app
+
 ![Spending Analytics Dashboard Screenshot](public/screenshot.png)
 
 ## Features
@@ -107,7 +109,6 @@ The `transactions` table includes:
 
 * Category filtering for transactions
 * User authentication
-* Deployment (Vercel)
 * Improved mobile responsiveness and UI polish
 
 ## License
