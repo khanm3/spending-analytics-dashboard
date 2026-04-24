@@ -10,7 +10,7 @@ export default function MonthlyTrendChart({ transactions }: Props) {
   const data = getMonthlyData(transactions)
 
   return (
-    <div className="w-full h-80">
+    <div className="w-full h-full">
       <ResponsiveContainer>
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />

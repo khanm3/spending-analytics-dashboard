@@ -54,20 +54,20 @@ export default function EditTransactionModal({
   }
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
-      <div className="bg-white p-6 rounded-xl w-96">
-        <h2 className="text-lg font-semibold mb-4">Edit Transaction</h2>
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-6 space-y-4">
+        <h2 className="text-xl font-semibold text-gray-800">Edit Transaction</h2>
 
         <form onSubmit={handleSubmit} className="space-y-3">
           <input
-            className="border p-2 w-full"
+            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Title"
           />
 
           <input
-            className="border p-2 w-full"
+            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             placeholder="Amount"
@@ -76,7 +76,7 @@ export default function EditTransactionModal({
           <label htmlFor="type" className="text-sm font-medium">Type</label>
           <select
             id="type"
-            className="border p-2 w-full"
+            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={type}
             onChange={(e) => setType(e.target.value as "income" | "expense")}
           >
@@ -85,25 +85,32 @@ export default function EditTransactionModal({
           </select>
 
           <input
-            className="border p-2 w-full"
+            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             placeholder="Category"
           />
 
           <input
-            className="border p-2 w-full"
+            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
 
-          <div className="flex justify-end gap-2">
-            <button type="button" onClick={onClose}>
+          <div className="flex justify-end gap-2 pt-2">
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-sm font-medium transition"
+            >
               Cancel
             </button>
 
-            <button type="submit">
+            <button
+              type="submit"
+              className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm font-medium transition"
+            >
               Save
             </button>
           </div>

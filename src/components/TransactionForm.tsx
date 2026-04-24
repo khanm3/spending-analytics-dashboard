@@ -23,7 +23,7 @@ export default function TransactionForm({ onAdd }: Props) {
       type
     }
 
-    const res = await fetch("/api/transactions", {
+    await fetch("/api/transactions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -42,17 +42,16 @@ export default function TransactionForm({ onAdd }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-
+    <form onSubmit={handleSubmit} className="space-y-3">
       <input
-        className="border p-2 w-full"
+        className="border rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
 
       <input
-        className="border p-2 w-full"
+        className="border rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
         placeholder="Amount"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
@@ -61,7 +60,7 @@ export default function TransactionForm({ onAdd }: Props) {
       <label htmlFor="type" className="text-sm font-medium">Type</label>
       <select
         id="type"
-        className="border p-2 w-full"
+        className="border rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
         value={type}
         onChange={(e) => setType(e.target.value as "income" | "expense")}
       >
@@ -70,7 +69,7 @@ export default function TransactionForm({ onAdd }: Props) {
       </select>
 
       <input
-        className="border p-2 w-full"
+        className="border rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
         placeholder="Category"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
@@ -78,15 +77,14 @@ export default function TransactionForm({ onAdd }: Props) {
 
       <input
         type="date"
-        className="border p-2 w-full"
+        className="border rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
         value={date}
         onChange={(e) => setDate(e.target.value)}
       />
 
-      <button className="bg-green-600 text-white px-4 py-2 rounded">
+      <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition">
         Save Transaction
       </button>
-
     </form>
   )
 }

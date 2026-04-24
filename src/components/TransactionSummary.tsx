@@ -16,24 +16,24 @@ export default function TransactionSummary({
     }).format(value)
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
       <div className="bg-white p-4 rounded-xl shadow hover:shadow-md transition">
         <p className="text-sm text-gray-500">Income</p>
-        <p className="text-xl font-semibold text-green-600">
+        <p className="text-2xl font-semibold text-green-600">
           {formatCurrency(totalIncome)}
         </p>
       </div>
 
       <div className="bg-white p-4 rounded-xl shadow hover:shadow-md transition">
         <p className="text-sm text-gray-500">Expenses</p>
-        <p className="text-xl font-semibold text-red-600">
+        <p className="text-2xl font-semibold text-red-600">
           {formatCurrency(totalExpenses)}
         </p>
       </div>
 
       <div className="bg-white p-4 rounded-xl shadow hover:shadow-md transition">
         <p className="text-sm text-gray-500">Net</p>
-        <p className={`text-xl font-semibold ${net >= 0 ? "text-green-600" : "text-red-600"}`}>
+        <p className={`text-2xl font-semibold ${net >= 0 ? "text-gray-900" : "text-red-600"}`}>
           {formatCurrency(net)}
         </p>
       </div>
