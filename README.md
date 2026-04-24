@@ -1,6 +1,6 @@
 # Spending Analytics Dashboard
 
-A full-stack web application for tracking, managing, and analyzing personal finances. Features an interactive dashboard with income vs spending views, category-based insights, and real-time data updates.
+A full-stack web application for tracking, managing, and analyzing personal finances. Features an interactive analytics dashboard with income vs spending views, category-based insights, and monthly financial trend visualization with real-time data updates.
 
 Built with Next.js, React, TypeScript, Tailwind CSS, and Supabase (PostgreSQL).
 
@@ -15,7 +15,8 @@ Built with Next.js, React, TypeScript, Tailwind CSS, and Supabase (PostgreSQL).
 - Edit transactions via modal interface
 - Dashboard with financial summary cards (income, expenses, net)
 - Toggleable income vs spending views for focused analysis
-- Spending breakdown by category (pie chart)
+- Category-based spending breakdown (pie chart visualization)
+- Monthly income vs expense trend chart (time-series analytics)
 - RESTful API routes using Next.js App Router
 - Supabase integration with PostgreSQL
 
@@ -29,14 +30,13 @@ Built with Next.js, React, TypeScript, Tailwind CSS, and Supabase (PostgreSQL).
 
 ## Project Structure
 
-```
-src/app/api/transactions/route.ts        # GET, POST
-src/app/api/transactions/[id]/route.ts  # PUT, DELETE
-src/app/transactions/page.tsx           # Dashboard page
-
-src/components/                         # UI components
-src/lib/supabase.ts                    # Supabase client
-```
+| Path | Purpose |
+|------|--------|
+| src/app/api/transactions/route.ts | GET, POST |
+| src/app/api/transactions/[id]/route.ts | PUT, DELETE |
+| src/app/transactions/page.tsx | Dashboard page |
+| src/components/ | UI components |
+| src/lib/supabase.ts | Supabase client |
 
 ## API Endpoints
 
@@ -105,10 +105,11 @@ The `transactions` table includes:
 
 ## Planned Features
 
-* Monthly trends chart (income vs expenses over time)
-* Category filtering
-* Authentication (user accounts)
+* Category filtering for transactions
+* User authentication
 * Deployment (Vercel)
+* Improved mobile responsiveness and UI polish
+
 ## License
 
 This project is for educational and portfolio purposes.
