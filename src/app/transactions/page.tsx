@@ -3,6 +3,7 @@
 import CategoryPieChart from "@/components/CategoryPieChart"
 import EditTransactionModal from "@/components/EditTransactionModal"
 import IncomeView from "@/components/IncomeView"
+import MonthlyTrendChart from "@/components/MonthlyTrendChart"
 import SpendingView from "@/components/SpendingView"
 import TransactionForm from "@/components/TransactionForm"
 import TransactionList from "@/components/TransactionList"
@@ -54,6 +55,8 @@ export default function TransactionsPage() {
         totalExpenses={totalExpenses}
         net={net}
       />
+
+      <MonthlyTrendChart transactions={transactions} />
 
       <div className="flex gap-2 mb-4">
         <button
