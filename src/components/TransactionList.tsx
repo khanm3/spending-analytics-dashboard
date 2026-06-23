@@ -6,6 +6,12 @@ type Props = {
   onEdit: (transaction: Transaction) => void
 }
 
+const formatCurrency = (value: number) =>
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(value)
+
 export default function TransactionList({ transactions, onDelete, onEdit }: Props) {
   const handleDelete = async (id: string) => {
     await fetch(`/api/transactions/${id}`, {
@@ -41,7 +47,7 @@ export default function TransactionList({ transactions, onDelete, onEdit }: Prop
                   <td className="p-3 text-sm text-gray-600 border-b border-gray-200">{t.date}</td>
                   <td className="p-3 text-sm text-gray-600 border-b border-gray-200">{t.title}</td>
                   <td className="p-3 text-sm text-gray-600 border-b border-gray-200">{t.category}</td>
-                  <td className="p-3 text-sm text-gray-600 border-b border-gray-200">{t.amount}</td>
+                  <td className="p-3 text-sm text-gray-600 border-b border-gray-200">{formatCurrency(t.amount)}</td>
                   <td className="p-3 text-sm text-gray-600 border-b border-gray-200">
                     <div className="flex gap-3">
                       <button
